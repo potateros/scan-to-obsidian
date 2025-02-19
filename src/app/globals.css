@@ -19,3 +19,51 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Adjust container padding */
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  /* Ensure buttons are easy to tap */
+  button,
+  [role="button"],
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve text readability */
+  .prose {
+    font-size: 0.875rem;
+  }
+
+  /* Ensure form elements are easily tappable */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important; /* Prevent iOS zoom on focus */
+  }
+
+  /* Improve scrolling experience */
+  .overflow-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Ensure proper spacing in flex layouts */
+  .flex-col > * + * {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Ensure proper touch targets for all devices */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  [role="button"],
+  a {
+    padding: 0.5rem;
+  }
+}

@@ -36,9 +36,7 @@ export async function POST(req: Request) {
           mimeType: mimeType || 'image/jpeg', // Default to image/jpeg for legacy support
         },
       },
-      mimeType === 'application/pdf'
-        ? "Extract and format the content of this PDF into markdown format. Include headers, lists, and other markdown elements as appropriate to maintain the document's structure."
-        : "Generate markdown from this image. If the image contains text, convert it to markdown format. If it's a diagram or picture, describe it in markdown format.",
+      "Convert this image or document to markdown. If there is a diagram or picture, describe it in markdown format. Give only the markdown code. Do not describe anything else other than the content of the pages itself. Assume only English is used.",
     ]);
 
     const response = await result.response;

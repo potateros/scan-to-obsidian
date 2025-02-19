@@ -214,18 +214,18 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen p-4 bg-white">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4 h-[calc(100vh-2rem)]">
+    <main className="min-h-screen p-2 sm:p-4 bg-white">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4 h-[calc(100vh-1rem)] sm:h-[calc(100vh-2rem)]">
         {/* Left Column - File Input and Preview */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2 sm:gap-4">
           {/* File Input */}
-          <div className="border border-gray-200 rounded-lg p-4 flex flex-col bg-white shadow-sm">
-            <h2 className="text-xl font-semibold mb-4 text-gray-800">Upload File</h2>
+          <div className="border border-gray-200 rounded-lg p-2 sm:p-4 flex flex-col bg-white shadow-sm">
+            <h2 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4 text-gray-800">Upload File</h2>
             <div className="flex-1 flex flex-col items-center justify-center">
               <div className="w-full max-w-md">
                 {isWebcamActive ? (
                   <div className="flex flex-col items-center w-full">
-                    <div className="w-full h-64 mb-4 relative bg-black rounded-lg overflow-hidden">
+                    <div className="w-full h-48 sm:h-64 mb-2 sm:mb-4 relative bg-black rounded-lg overflow-hidden">
                       <video
                         ref={videoRef}
                         autoPlay
@@ -260,7 +260,7 @@ export default function Home() {
                     />
                     <label
                       htmlFor="file-input"
-                      className="w-full h-64 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors mb-4 relative"
+                      className="w-full h-48 sm:h-64 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors mb-2 sm:mb-4 relative"
                     >
                       {isProcessing && (
                         <div className="absolute inset-0 bg-white bg-opacity-90 flex flex-col items-center justify-center">
@@ -308,9 +308,9 @@ export default function Home() {
 
           {/* File Preview */}
           {filePreview && (
-            <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-sm">
-              <h2 className="text-xl font-semibold mb-4 text-gray-800">File Preview</h2>
-              <div className="w-full h-64 relative rounded-lg overflow-hidden bg-gray-100">
+            <div className="border border-gray-200 rounded-lg p-2 sm:p-4 bg-white shadow-sm">
+              <h2 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4 text-gray-800">File Preview</h2>
+              <div className="w-full h-48 sm:h-64 relative rounded-lg overflow-hidden bg-gray-100">
                 {filePreview.type.startsWith('image/') ? (
                   <img
                     src={filePreview.url}
@@ -330,10 +330,10 @@ export default function Home() {
         </div>
 
         {/* Right Column - Markdown Output */}
-        <div className="border border-gray-200 rounded-lg p-4 flex flex-col bg-white shadow-sm">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold text-gray-800">Generated Markdown</h2>
-            <div className="flex items-center gap-4">
+        <div className="border border-gray-200 rounded-lg p-2 sm:p-4 flex flex-col bg-white shadow-sm">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 sm:mb-4 gap-2 sm:gap-0">
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Generated Markdown</h2>
+            <div className="flex items-center gap-2 sm:gap-4 w-full sm:w-auto">
               <button
                 onClick={copyToClipboard}
                 className="text-gray-600 hover:text-gray-900 transition-colors"
@@ -377,13 +377,13 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex-1 overflow-auto bg-gray-50 rounded p-4">
+          <div className="flex-1 overflow-auto bg-gray-50 rounded p-2 sm:p-4">
             {isProcessing ? (
               <div className="flex items-center justify-center h-full">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
               </div>
             ) : activeTab === 'preview' ? (
-              <div className="prose prose-sm max-w-none">
+              <div className="prose prose-sm sm:prose max-w-none">
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeHighlight]}
